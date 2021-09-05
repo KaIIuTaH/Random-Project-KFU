@@ -1,0 +1,49 @@
+from tkinter import *
+import smtplib
+
+server = smtplib.SMTP(host='smtp.gmail.com', port = 587)
+server.starttls()
+
+def btn_clk():
+	global login
+	login = loginField.get()
+	password = passField.get()
+	server.login(login,password)
+	txt.configure(text = "Send message")
+	loginField.destroy()
+	passField.destroy()
+	btn.destroy()
+
+def snd_msg():
+	rlogin = recivierLogin.get()
+	msgtex = msgtext.get()
+	server.sendmail(login,rlogin,msgtex)
+	recivierLogin.delete(0, END)
+	msgtext.delete(0, END)
+
+win = Tk()
+win.title("SMTP-client")
+win.geometry('300x150')
+
+txt = Label(win, text = "Autorize")
+txt.pack()
+
+loginField = Entry(win)
+loginField.pack()
+
+passField = Entry(win, show = "*")
+passField.pack()
+
+btn = Button(win, text = "Login", command = btn_clk)
+btn.pack()
+
+recivierLogin = Entry(win)
+recivierLogin.pack()
+
+msgtext = Entry(win)
+msgtext.pack()
+
+btnsend = Button(win, text = "Send", command = snd_msg)
+btnsend.pack()
+
+win.mainloop()
