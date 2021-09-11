@@ -4,16 +4,16 @@ from tkinter import *
 #functions
 
 
-def dataswap():
-    swapped = ent.get()
-    ver = str(variation.get())
+def dataswap():         #функция, позволяющая менять значения
+    swapped = ent.get() #получение данных с Ent
+    ver = str(variation.get()) #получение данных с variation
     lbl.configure(text=swapped)
     lbl2.configure(text=ver)
 
-def varswap():
+def varswap(): #сомнительная замена значения variation на 1
     variation = 1
 
-variation = 0
+variation = 0 #зачем эту фигню я добавил?
 #main
 root = Tk()
 root.title('Интерфейс Tkinter')
@@ -25,7 +25,7 @@ ent.pack()
 but = Button(text='Замена', command=dataswap)
 but.pack()
 checkbox_state = BooleanVar()
-checkbox_state.set(False)
+checkbox_state.set(False) #изначальное состояние Checkbox
 checkbox = Checkbutton(text='Я дебил.', var = checkbox_state)
 checkbox.pack()
 lbl2 = Label(text=variation)
