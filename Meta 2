@@ -1,0 +1,26 @@
+from tkinter import *
+
+def varswap(): #сомнительная замена значения variation на 1
+    if checkbox_state.get() == False:
+        lb.configure(text = "0")
+    else:
+        lb.configure(text = "1")
+
+variation = "0"
+
+root = Tk()
+root.title('Интерфейс Tkinter')
+root.geometry('640x480')
+
+checkbox_state = BooleanVar()
+
+checkbox = Checkbutton(text='Я дебил.', var = checkbox_state)
+checkbox.pack()
+
+lb = Label(text=variation)
+lb.pack()
+
+btn2 = Button(text='Замена значения', command = varswap)
+btn2.pack()
+
+root.mainloop()
